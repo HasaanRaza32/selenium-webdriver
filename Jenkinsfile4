@@ -3,12 +3,15 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                 sh '''
-            python3 -m pip install --user selenium
-            python3 TestScriptMay092025.py
-        '''
+                sh '''
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install selenium
+                    python TestScriptMay092025.py
+                '''
             }
         }
     }
 }
+
 
