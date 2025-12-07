@@ -1,40 +1,9 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Setup Python') {
-            steps {
-                sh '''
-                    # Update package list and install required packages
-                    sudo apt-get update
-                    sudo apt-get install -y python3-venv python3-pip
-                    
-                    # Create virtual environment
-                    python3 -m venv my_env
-                    
-                    # Activate virtual environment and install dependencies
-                    source my_env/bin/activate
-                    pip install -r requirements.txt
-                '''
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                sh '''
-                    source my_env/bin/activate
-                    # Add your test commands here
-                    # For example:
-                    # python -m pytest
-                    # or run your Selenium tests
-                '''
-            }
-        }
-    }
-    
-    post {
-        always {
-            cleanWs()  # Clean workspace after build
-        }
+  agent any
+  stages {
+    stage('Test') {
+      steps {
+        sh 'python3 TestScriptMay092025.py'
+      }
     }
 }
