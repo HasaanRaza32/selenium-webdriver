@@ -1,9 +1,11 @@
 pipeline {
-  agent any
-  stages {
-    stage('Test') {
-      steps {
-        sh 'python3 TestScriptMay092025.py'
-      }
+    agent any
+    stages {
+        stage('Test') {
+            steps {
+                sh 'python3 TestScriptMay092025.py'
+            }
+        }
     }
 }
+
